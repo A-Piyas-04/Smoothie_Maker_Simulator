@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class NavigationPanel extends JPanel {
-    public NavigationPanel(CardLayout cardLayout, JPanel cardPanel) {
+    public NavigationPanel(MainFrame mainFrame) {
         setLayout(new BorderLayout());
         
         JPanel buttonPanel = new JPanel();
@@ -14,8 +14,11 @@ public class NavigationPanel extends JPanel {
         JButton smoothiesButton = createButton("Smoothies");
         JButton exitButton = createButton("Exit");
 
-        playButton.addActionListener(e -> cardLayout.show(cardPanel, "play"));
-        smoothiesButton.addActionListener(e -> cardLayout.show(cardPanel, "smoothies"));
+        playButton.addActionListener(e -> {
+            mainFrame.setVisible(false);
+            new GameFrame(mainFrame).setVisible(true);
+        });
+        smoothiesButton.addActionListener(e -> mainFrame.getCardLayout().show(mainFrame.getCardPanel(), "smoothies"));
         exitButton.addActionListener(e -> System.exit(0));
 
         buttonPanel.add(Box.createVerticalGlue());
