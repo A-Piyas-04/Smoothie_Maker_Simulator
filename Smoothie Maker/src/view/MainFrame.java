@@ -16,10 +16,6 @@ public class MainFrame extends JFrame {
         setLocationRelativeTo(null);
         setResizable(true);
 
-        // Set application icon
-        ImageIcon icon = new ImageIcon(getClass().getResource("/resources/icon.png"));
-        setIconImage(icon.getImage());
-
         // Initialize main panel with CardLayout for view switching
         cardLayout = new CardLayout();
         mainPanel = new JPanel(cardLayout);
