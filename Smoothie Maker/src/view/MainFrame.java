@@ -6,6 +6,11 @@ import javax.swing.*;
 import java.awt.*;
 
 public class MainFrame extends JFrame {
+    private OrderPanel orderPanel;
+
+    public OrderPanel getOrderPanel() {
+        return orderPanel;
+    }
     private GameController controller;
     private JPanel mainPanel;
     private CardLayout cardLayout;
@@ -14,6 +19,8 @@ public class MainFrame extends JFrame {
     private static final int DEFAULT_HEIGHT = 600;
 
     public MainFrame(GameController controller) {
+        orderPanel = new OrderPanel(controller);
+        add(orderPanel, BorderLayout.EAST);
         this.controller = controller;
         setTitle("Smoothie Maker Challenge");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
