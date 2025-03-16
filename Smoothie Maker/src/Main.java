@@ -1,8 +1,11 @@
-import controller.GameController;
+import javax.swing.*;
 
 public class Main {
 public static void main(String[] args) {
-        GameController gameController = new GameController();
-        gameController.startGame();
+        SwingUtilities.invokeLater(() -> {
+            MainFrame frame = new MainFrame();
+            frame.setVisible(true);
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        });
     }
 }
