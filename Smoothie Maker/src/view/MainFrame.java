@@ -1,35 +1,34 @@
 package view;
 
+import controller.GameController;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class MainFrame extends JFrame {
-    private static final int DEFAULT_WIDTH = 800;
-    private static final int DEFAULT_HEIGHT = 600;
+    private GameController controller;
     private JPanel mainPanel;
     private CardLayout cardLayout;
+    private MixingPanel mixingPanel;
+    private static final int DEFAULT_WIDTH = 800;
+    private static final int DEFAULT_HEIGHT = 600;
 
-    public MainFrame() {
+    public MainFrame(GameController controller) {
+        this.controller = controller;
         setTitle("Smoothie Maker Challenge");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
         setLocationRelativeTo(null);
         setResizable(true);
 
-        // Initialize main panel with CardLayout for view switching
         cardLayout = new CardLayout();
         mainPanel = new JPanel(cardLayout);
+        mainPanel.add(new IngredientSelectionPanel(controller), "SELECTION");
+        mainPanel.add(mixingPanel = new MixingPanel(controller), "MIXING");
         add(mainPanel);
-
-        // Initialize views
-        initializeViews();
     }
 
-    private void initializeViews() {
-        // Add different views/panels
-        mainPanel.add(new MainMenuPanel(), "MAIN_MENU");
-        // Other views will be added here
-    }
+
 
     public void switchView(String viewName) {
         cardLayout.show(mainPanel, viewName);
@@ -37,8 +36,10 @@ public class MainFrame extends JFrame {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            MainFrame frame = new MainFrame();
+            GameController controller = new GameController();
+            MainFrame frame = new MainFrame(controller);
             frame.setVisible(true);
+            controller.startGame();
         });
     }
 }

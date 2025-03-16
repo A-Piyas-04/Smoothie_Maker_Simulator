@@ -25,7 +25,7 @@ public class GameController {
     public GameController() {
         gameState = new GameState();
         initializeIngredients();
-        mainFrame = new MainFrame();
+        mainFrame = new MainFrame(this);
         mainFrame.setVisible(true);
     }
 
