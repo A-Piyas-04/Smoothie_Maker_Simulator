@@ -4,10 +4,11 @@ import java.awt.event.*;
 import java.util.*;
 import java.util.List;
 
-public class GamePanel extends JPanel {
+public class GamePanel extends JPanel{
     private BlenderController blenderController;
     private JTextArea statusArea;
     private Mug currentMug;
+    private BlenderAnimationPanel blenderPanel;
 
     public GamePanel() {
         blenderController = new BlenderController();
@@ -19,6 +20,8 @@ public class GamePanel extends JPanel {
         mainPanel.add(createControlPanel());
         
         add(mainPanel, BorderLayout.CENTER);
+        blenderPanel = new BlenderAnimationPanel();
+        add(blenderPanel, BorderLayout.NORTH);
         
         statusArea = new JTextArea(5, 20);
         statusArea.setEditable(false);
@@ -41,7 +44,7 @@ public class GamePanel extends JPanel {
         for (String item : items) {
             JButton btn = new JButton(item);
             btn.addActionListener(e -> {
-                blenderController.addIngredient(new BasicIngredient(item));
+                blenderController.addIngredient(new BasicIngredient(item, getIngredientScore(item)));
                 updateStatus("Added: " + item);
             });
             buttonPanel.add(btn);
@@ -66,14 +69,21 @@ public class GamePanel extends JPanel {
     private JPanel createControlPanel() {
         JPanel panel = new JPanel();
         JButton blendBtn = new JButton("Blend!");
-        blendBtn.addActionListener(e -> performBlending());
+        blendBtn.addActionListener(e -> {
+            if (currentMug == null || !blenderController.hasIngredients()) {
+                updateStatus("Please select a mug and add ingredients first!");
+                return;
+            }
+            blenderPanel.startAnimation();
+            performBlending();
+        });
         panel.add(blendBtn);
         return panel;
     }
 
     private void performBlending() {
         if (currentMug == null) {
-            updateStatus("Please select a mug first!");
+            updateStatus("Please select a mug first!");                             
             return;
         }
         
@@ -85,22 +95,44 @@ public class GamePanel extends JPanel {
     private void updateStatus(String message) {
         statusArea.append(message + "\n");
     }
+    private int getIngredientScore(String name) {
+        switch (name) {
+            case "Vanilla":
+            case "Chocolate": return -5;
+            case "Strawberry": return -3;
+            case "Banana": return 10;
+            case "Berry": return 8;
+            case "Mango": return 7;
+            case "Nuts": return 5;
+            case "Sprinkles": return -2;
+            case "Choco Chips": return -4;
+            default: return 0;
+        }
+    }
 }
 
 interface Ingredient {
     String getName();
+    int getScore();
 }
 
 class BasicIngredient implements Ingredient {
     private String name;
+    private int score;
     
-    public BasicIngredient(String name) {
+    public BasicIngredient(String name, int score) {
         this.name = name;
+        this.score = score;
     }
     
     @Override
     public String getName() {
         return name;
+    }
+    
+    @Override
+    public int getScore() {
+        return score;
     }
 }
 
@@ -119,13 +151,19 @@ class BlenderController {
     public String blend() {
         if (ingredients.isEmpty()) return "Add ingredients first!";
         
+        int totalScore = 0;
         StringBuilder result = new StringBuilder("Blending in " + mug.getType() + ":\n");
         for (Ingredient i : ingredients) {
             result.append("- Mixing ").append(i.getName()).append("\n");
+            totalScore += i.getScore();
         }
-        result.append("Blend complete! Enjoy your ").append(mug.getType()).append(" smoothie!");
+        result.append("Blend complete! Score: " + totalScore + ". Enjoy your ").append(mug.getType()).append(" smoothie!");
         ingredients.clear();
         return result.toString();
+    }
+
+    public boolean hasIngredients() {
+        return !ingredients.isEmpty();
     }
 }
 
@@ -149,4 +187,5 @@ class MugFactory {
         if (type.contains("Glass")) return new GlassMug();
         throw new IllegalArgumentException("Invalid mug type");
     }
+
 }
