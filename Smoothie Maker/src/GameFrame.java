@@ -5,7 +5,7 @@ public class GameFrame extends JFrame {
     public GameFrame(MainFrame mainFrame) {
         setTitle("Smoothie Maker Game");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(800, 600);
+        setSize(1000, 760);
         setLocationRelativeTo(null);
         
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -15,6 +15,17 @@ public class GameFrame extends JFrame {
             }
         });
 
-        add(new GamePanel());
+        JButton mainMenuButton = new JButton("Main Menu");
+        mainMenuButton.setPreferredSize(new Dimension(100, 30));
+        mainMenuButton.addActionListener(e -> {
+            dispose();
+            mainFrame.setVisible(true);
+        });
+
+        JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        topPanel.add(mainMenuButton);
+
+        add(topPanel, BorderLayout.NORTH);
+        add(new GamePanel(), BorderLayout.CENTER);
     }
 }
