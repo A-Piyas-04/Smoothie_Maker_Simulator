@@ -14,6 +14,7 @@ public class GamePanel extends JPanel{
     public GamePanel() {
         blenderController = new BlenderController();
         setLayout(new BorderLayout());
+        setPreferredSize(new Dimension(1000, 760));
         
         JPanel mainPanel = new JPanel(new GridLayout(3, 1, 10, 10));
         mainPanel.add(createIngredientsPanel());
@@ -22,6 +23,7 @@ public class GamePanel extends JPanel{
         
         add(mainPanel, BorderLayout.CENTER);
         blenderPanel = new BlenderAnimationPanel();
+        blenderPanel.setPreferredSize(new Dimension(300, 200));
         JPanel scorePanel = new JPanel();
         scoreLabel = new JLabel("Score: 0");
         scoreLabel.setFont(new Font("Arial", Font.BOLD, 24));
@@ -38,16 +40,16 @@ public class GamePanel extends JPanel{
 
     private JPanel createIngredientsPanel() {
         JPanel panel = new JPanel(new GridLayout(1, 3, 10, 10));
-        panel.add(createCategoryPanel("Flavors", Arrays.asList("Vanilla", "Chocolate", "Strawberry")));
-        panel.add(createCategoryPanel("Fruits", Arrays.asList("Banana", "Berry", "Mango")));
-        panel.add(createCategoryPanel("Toppings", Arrays.asList("Nuts", "Sprinkles", "Choco Chips")));
+        panel.add(createCategoryPanel("Flavors", Arrays.asList("Vanilla", "Chocolate", "Strawberry", "Caramel")));
+        panel.add(createCategoryPanel("Fruits", Arrays.asList("Banana", "Apple", "Kiwi", "Mango", "Pineapple", "Berry")));
+        panel.add(createCategoryPanel("Toppings", Arrays.asList("Nuts", "Sprinkles", "Choco Chips", "Granola", "Coconut Flakes")));
         return panel;
     }
 
     private JPanel createCategoryPanel(String title, List<String> items) {
         JPanel panel = new JPanel(new BorderLayout());
         panel.setBorder(BorderFactory.createTitledBorder(title));
-        JPanel buttonPanel = new JPanel(new GridLayout(items.size(), 1));
+        JPanel buttonPanel = new JPanel(new GridLayout(0, 2)); // 2 columns for better spacing
         
         for (String item : items) {
             JButton btn = new JButton(item);
@@ -119,15 +121,21 @@ public class GamePanel extends JPanel{
     }
     private int getIngredientScore(String name) {
         switch (name) {
-            case "Vanilla":
+            case "Vanilla": return -4;
             case "Chocolate": return -5;
             case "Strawberry": return -3;
-            case "Banana": return 10;
+            case "Caramel": return -6;
+            case "Banana": return 8;
+            case "Apple": return 9;
+            case "Kiwi": return 8;
+            case "Pineapple": return 7;
             case "Berry": return 8;
-            case "Mango": return 7;
+            case "Mango": return 10;
             case "Nuts": return 5;
             case "Sprinkles": return -2;
             case "Choco Chips": return -4;
+            case "Granola": return 6;
+            case "Coconut Flakes": return 5;
             default: return 0;
         }
     }
