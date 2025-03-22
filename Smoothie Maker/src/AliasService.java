@@ -1,7 +1,7 @@
 public class AliasService {
     public static String getAlias(int score) {
         if (score < -15) {
-            return "Health Novice";
+            return "Health Noob";
         } else if (score < -8) {
             return "Wellness Trainee";
         } else if (score < 0) {

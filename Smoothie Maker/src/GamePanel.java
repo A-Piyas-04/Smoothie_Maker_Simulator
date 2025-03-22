@@ -22,9 +22,9 @@ public class GamePanel extends JPanel {
         mainPanel.add(new MugSelectionPanel(gameStateManager, statusPanel));
         mainPanel.add(new BlendControlPanel(gameStateManager, statusPanel));
 
-        // Setup score display
+        // Setup score and alias display
         JPanel scorePanel = new JPanel();
-        scoreLabel = new JLabel("Score: 0");
+        scoreLabel = new JLabel("Score: 0 | Alias: ");
         scoreLabel.setFont(new Font("Arial", Font.BOLD, 24));
         scorePanel.add(scoreLabel);
 
@@ -40,7 +40,8 @@ public class GamePanel extends JPanel {
 
         // Setup score update listener
         gameStateManager.setScoreUpdateListener(score -> {
-            scoreLabel.setText("Score: " + score);
+            String alias = AliasService.getAlias(score);
+            scoreLabel.setText("Score: " + score + "  -||-  Alias: " + alias);
         });
     }
 }
