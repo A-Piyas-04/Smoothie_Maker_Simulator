@@ -50,7 +50,7 @@ public class GamePanel extends JPanel{
 
     private JPanel createIngredientsPanel() {
         JPanel panel = new JPanel(new GridLayout(1, 3, 10, 10));
-        panel.add(createCategoryPanel("Flavors", Arrays.asList("Vanilla", "Chocolate", "Strawberry", "Caramel")));
+        panel.add(createCategoryPanel("Flavors", Arrays.asList("Almond Milk","Natural Milk","Vanilla", "Chocolate", "Strawberry", "Caramel")));
         panel.add(createCategoryPanel("Fruits", Arrays.asList("Banana", "Apple", "Kiwi", "Mango", "Pineapple", "Berry")));
         panel.add(createCategoryPanel("Toppings", Arrays.asList("Nuts", "Sprinkles", "Choco Chips", "Granola", "Coconut Flakes")));
         return panel;
