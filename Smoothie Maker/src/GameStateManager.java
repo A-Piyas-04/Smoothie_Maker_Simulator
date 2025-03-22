@@ -1,10 +1,19 @@
 import java.util.List;
+import java.util.function.Consumer;
 
 public class GameStateManager {
     private BlenderController blenderController;
     private Mug currentMug;
     private int score;
     private ScoreService scoreService;
+    private Consumer<Integer> scoreUpdateListener;
+
+    public void setScoreUpdateListener(Consumer<Integer> listener) {
+        this.scoreUpdateListener = listener;
+        if (listener != null) {
+            listener.accept(score);
+        }
+    }
 
     public GameStateManager() {
         blenderController = new BlenderController();
@@ -38,6 +47,9 @@ public class GameStateManager {
     public String blend(String smoothieName) {
         String result = blenderController.blend(smoothieName);
         score += blenderController.calculateScore();
+        if (scoreUpdateListener != null) {
+            scoreUpdateListener.accept(score);
+        }
         return result;
     }
 

@@ -4,6 +4,15 @@ import java.util.List;
 class BlenderController {
     private List<Ingredient> ingredients = new ArrayList<>();
     private Mug mug;
+    private BlenderAnimationPanel blenderPanel;
+
+    public BlenderController() {
+        blenderPanel = new BlenderAnimationPanel();
+    }
+
+    public BlenderAnimationPanel getBlenderPanel() {
+        return blenderPanel;
+    }
     
     private int lastScore = 0;
 
