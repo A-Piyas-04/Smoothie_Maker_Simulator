@@ -1,6 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import javax.swing.text.*;
+import java.awt.image.BufferedImage;
 import java.util.*;
 import java.util.List;
 
@@ -35,7 +37,15 @@ public class GamePanel extends JPanel{
         
         statusArea = new JTextArea(5, 20);
         statusArea.setEditable(false);
-        add(new JScrollPane(statusArea), BorderLayout.SOUTH);
+        statusArea.setFont(new Font("Arial", Font.BOLD, 16));  // Make text bigger and bold
+        
+        // Create a panel to center the status area
+        JPanel statusPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        JScrollPane scrollPane = new JScrollPane(statusArea);
+        scrollPane.setPreferredSize(new Dimension(400, 120));  // Control width of status area
+        statusPanel.add(scrollPane);
+        
+        add(statusPanel, BorderLayout.SOUTH);
     }
 
     private JPanel createIngredientsPanel() {

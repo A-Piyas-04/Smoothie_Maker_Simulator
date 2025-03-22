@@ -16,7 +16,7 @@ class BlenderController {
             totalScore += i.getScore();
         }
         this.lastScore = totalScore;
-        result.append("Blend complete! Enjoy your " + smoothieName);
+        result.append("\n=========== BLEND COMPLETE! =========== \nEnjoy your - [" + smoothieName +"]" + "\n\n");
         ingredients.clear();
         return result.toString();
     }
