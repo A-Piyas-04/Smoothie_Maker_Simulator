@@ -64,7 +64,13 @@ public class GamePanel extends JPanel{
         for (String item : items) {
             JButton btn = new JButton(item);
             btn.addActionListener(e -> {
-                blenderController.addIngredient(new BasicIngredient(item, getIngredientScore(item)));
+                Ingredient ingredient = switch(title) {
+                    case "Flavors" -> new FlavorIngredient(item, getIngredientScore(item));
+                    case "Fruits" -> new FruitIngredient(item, getIngredientScore(item));
+                    case "Toppings" -> new ToppingIngredient(item, getIngredientScore(item));
+                    default -> throw new IllegalStateException("Unexpected category: " + title);
+                };
+                blenderController.addIngredient(ingredient);
                 updateStatus("Added: " + item);
             });
             buttonPanel.add(btn);
