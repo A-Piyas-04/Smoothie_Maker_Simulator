@@ -7,6 +7,7 @@ public class BlenderAnimationPanel extends JPanel {
     private float angle = 0;
     private Timer animationTimer;
     private int progress = 0;
+    private Runnable onAnimationComplete;
     
     public BlenderAnimationPanel() {
         setPreferredSize(new Dimension(200, 200));
@@ -17,6 +18,9 @@ public class BlenderAnimationPanel extends JPanel {
                 progress = Math.min(progress + 2, 100);
                 if (progress >= 100) {
                     animationTimer.stop();
+                    if (onAnimationComplete != null) {
+                        onAnimationComplete.run();
+                    }
                 }
                 repaint();
             }
@@ -60,5 +64,9 @@ public class BlenderAnimationPanel extends JPanel {
 
     public void stopAnimation() {
         animationTimer.stop();
+    }
+
+    public void setOnAnimationComplete(Runnable callback) {
+        this.onAnimationComplete = callback;
     }
 }

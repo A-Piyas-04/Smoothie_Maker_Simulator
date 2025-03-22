@@ -115,9 +115,10 @@ public class GamePanel extends JPanel{
                 updateStatus("Please select a mug and add ingredients first!");
                 return;
             }
-            blenderPanel.startAnimation();
-            performBlending(nameField.getText().trim());
+            String smoothieName = nameField.getText().trim();
             nameField.setText("");
+            blenderPanel.setOnAnimationComplete(() -> performBlending(smoothieName));
+            blenderPanel.startAnimation();
         });
 
         panel.add(inputPanel, BorderLayout.NORTH);
