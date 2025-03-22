@@ -4,19 +4,18 @@ import java.util.List;
 class BlenderController {
     private List<Ingredient> ingredients = new ArrayList<>();
     private Mug mug;
-    private int lastScore;
     
+    private int lastScore = 0;
+
     public String blend(String smoothieName) {
         if (ingredients.isEmpty()) return "Add ingredients first!";
         
-        int totalScore = 0;
+        lastScore = calculateScore();
         StringBuilder result = new StringBuilder("Blending " + smoothieName + " in " + mug.getType() + ":\n");
         for (Ingredient i : ingredients) {
             result.append("- Mixing ").append(i.getName()).append("\n");
-            totalScore += i.getScore();
         }
-        this.lastScore = totalScore;
-        result.append("\n=========== BLEND COMPLETE! =========== \nEnjoy your - [" + smoothieName +"]" + "\n\n");
+        result.append("\n=========== BLEND COMPLETE! =========== \n\nEnjoy your - [" + smoothieName +"]" + "\n\n");
         ingredients.clear();
         return result.toString();
     }
@@ -33,7 +32,12 @@ class BlenderController {
         return !ingredients.isEmpty();
     }
 
-    public int getLastScore() {
-        return lastScore;
+    private final ScoreService scoreService = new ScoreService();
+
+    public int calculateScore() {
+        if (ingredients.isEmpty()) {
+            return lastScore;
+        }
+        return scoreService.calculateTotalScore(ingredients);
     }
 }
