@@ -1,3 +1,8 @@
+package com.smoothiemaker.view;
+
+import com.smoothiemaker.controller.GameStateManager;
+import com.smoothiemaker.model.Mug;
+import com.smoothiemaker.model.MugFactory;
 import javax.swing.*;
 import java.awt.*;
 

@@ -1,3 +1,5 @@
+package com.smoothiemaker.model;
+
 public class FlavorIngredient extends Ingredient {
     public FlavorIngredient(String name, int score) {
         super(name, score);

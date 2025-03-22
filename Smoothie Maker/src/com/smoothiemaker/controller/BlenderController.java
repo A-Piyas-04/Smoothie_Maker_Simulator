@@ -1,7 +1,14 @@
+package com.smoothiemaker.controller;
+
+import com.smoothiemaker.model.Ingredient;
+import com.smoothiemaker.model.Mug;
+import com.smoothiemaker.view.BlenderAnimationPanel;
+import com.smoothiemaker.service.ScoreService;
+
 import java.util.ArrayList;
 import java.util.List;
 
-class BlenderController {
+public class BlenderController {
     private List<Ingredient> ingredients = new ArrayList<>();
     private Mug mug;
     private BlenderAnimationPanel blenderPanel;

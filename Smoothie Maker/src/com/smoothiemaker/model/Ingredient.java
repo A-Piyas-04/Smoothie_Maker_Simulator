@@ -1,3 +1,5 @@
+package com.smoothiemaker.model;
+
 public abstract class Ingredient {
     private String name;
     private int score;

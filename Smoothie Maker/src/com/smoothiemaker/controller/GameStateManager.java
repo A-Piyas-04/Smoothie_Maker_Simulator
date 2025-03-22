@@ -1,4 +1,7 @@
-import java.util.List;
+package com.smoothiemaker.controller;
+
+import com.smoothiemaker.model.*;
+import com.smoothiemaker.service.ScoreService;
 import java.util.function.Consumer;
 
 public class GameStateManager {

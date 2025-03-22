@@ -1,3 +1,0 @@
-interface Mug {
-    String getType();
-}

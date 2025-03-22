@@ -1,3 +1,5 @@
+package com.smoothiemaker.view;
+
 import javax.swing.*;
 import java.awt.*;
 
