@@ -95,12 +95,14 @@ public class GamePanel extends JPanel{
     private JPanel createControlPanel() {
         JPanel panel = new JPanel(new BorderLayout(10, 10));
         
-        JPanel inputPanel = new JPanel(new GridLayout(3, 1, 5, 5));
+        JPanel inputPanel = new JPanel(new GridLayout(2, 1, 3, 3));
         JTextField playerNameField = new JTextField();
-        JTextField nameField = new JTextField();
-        inputPanel.add(new JLabel("Your Name:"));
+        inputPanel.add(new JLabel("Your Name     :"));
         inputPanel.add(playerNameField);
-        inputPanel.add(new JLabel("Smoothie Name:"));
+
+
+        JTextField nameField = new JTextField();
+        inputPanel.add(new JLabel("Smoothie Name :"));
         inputPanel.add(nameField);
         
         JButton blendBtn = new JButton("Blend!");
