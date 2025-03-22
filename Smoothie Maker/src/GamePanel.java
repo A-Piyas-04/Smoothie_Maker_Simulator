@@ -65,9 +65,9 @@ public class GamePanel extends JPanel{
             JButton btn = new JButton(item);
             btn.addActionListener(e -> {
                 Ingredient ingredient = switch(title) {
-                    case "Flavors" -> new FlavorIngredient(item, getIngredientScore(item));
-                    case "Fruits" -> new FruitIngredient(item, getIngredientScore(item));
-                    case "Toppings" -> new ToppingIngredient(item, getIngredientScore(item));
+                    case "Flavors" -> new FlavorIngredient(item, scoreService.getIngredientScore(item));
+                    case "Fruits" -> new FruitIngredient(item, scoreService.getIngredientScore(item));
+                    case "Toppings" -> new ToppingIngredient(item, scoreService.getIngredientScore(item));
                     default -> throw new IllegalStateException("Unexpected category: " + title);
                 };
                 blenderController.addIngredient(ingredient);
@@ -128,31 +128,13 @@ public class GamePanel extends JPanel{
         
         blenderController.setMug(currentMug);
         String result = blenderController.blend(smoothieName);
+        int score = blenderController.calculateScore();
+        scoreLabel.setText("Score: " + score);
         updateStatus(result);
-        scoreLabel.setText("Score: " + blenderController.getLastScore());
     }
 
     private void updateStatus(String message) {
         statusArea.append(message + "\n");
     }
-    private int getIngredientScore(String name) {
-        switch (name) {
-            case "Vanilla": return -4;
-            case "Chocolate": return -5;
-            case "Strawberry": return -3;
-            case "Caramel": return -6;
-            case "Banana": return 8;
-            case "Apple": return 9;
-            case "Kiwi": return 8;
-            case "Pineapple": return 7;
-            case "Berry": return 8;
-            case "Mango": return 10;
-            case "Nuts": return 5;
-            case "Sprinkles": return -2;
-            case "Choco Chips": return -4;
-            case "Granola": return 6;
-            case "Coconut Flakes": return 5;
-            default: return 0;
-        }
-    }
+    private ScoreService scoreService = new ScoreService();
 }
