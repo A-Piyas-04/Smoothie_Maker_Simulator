@@ -14,7 +14,7 @@ Smoothie Maker is an interactive Simulation application where users can:
 
 ## SOLID Principles Analysis ---->
 
-### Well-Implemented SOLID Principles
+### Well-Implemented SOLID Principles :
 
 1. **Single Responsibility Principle (SRP)**
    - `ScoreService`     : Handles only scoring logic
@@ -46,7 +46,7 @@ Smoothie Maker is an interactive Simulation application where users can:
    - `MugFactory` creates specific mug implementations through the `Mug` interface
 
 
-### Areas for SOLID Improvement
+### Areas for SOLID Improvement :
 
 1. **Single Responsibility Principle**
    - `GamePanel`: Currently handles multiple responsibilities (UI, game state)
