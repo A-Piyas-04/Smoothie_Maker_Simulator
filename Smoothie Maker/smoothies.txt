@@ -69,3 +69,24 @@ Alias       : Fitness Advocate
 
 
 
++==================================+
+|====) Smoothie Creation Log (=====|
++==================================+
+Time        : 2025-03-23 13:20:09
+Player      : Pias
+Smoothie    : Milky-way
+
+Ingredients :
+- Mixing : Almond Milk
+- Mixing : Caramel
+- Mixing : Vanilla
+- Mixing : Banana
+- Mixing : Nuts
+
+Score       : 7
+Alias       : Wellness Seeker
+
++==================================+
+
+
+

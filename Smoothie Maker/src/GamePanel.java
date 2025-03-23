@@ -22,16 +22,16 @@ public class GamePanel extends JPanel {
         mainPanel.add(new MugSelectionPanel(gameStateManager, statusPanel));
         mainPanel.add(new BlendControlPanel(gameStateManager, statusPanel));
 
-        // Setup title display
-        JPanel titlePanel = new JPanel();
-        JLabel titleLabel = new JLabel("-- Make your own Smoothiee --");
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
-        titlePanel.add(titleLabel);
+        // Setup score and alias display
+        JPanel scorePanel = new JPanel();
+        scoreLabel = new JLabel("-- Make Your Own Smoothie --");
+        scoreLabel.setFont(new Font("Arial", Font.BOLD, 24));
+        scorePanel.add(scoreLabel);
 
-        // Setup north panel with blender and title
+        // Setup north panel with blender and score
         JPanel northPanel = new JPanel(new BorderLayout());
         northPanel.add(blenderPanel, BorderLayout.CENTER);
-        northPanel.add(titlePanel, BorderLayout.SOUTH);
+        northPanel.add(scorePanel, BorderLayout.SOUTH);
 
         // Add panels to main layout
         add(mainPanel, BorderLayout.CENTER);
@@ -41,7 +41,7 @@ public class GamePanel extends JPanel {
         // Setup score update listener
         gameStateManager.setScoreUpdateListener(score -> {
             String alias = AliasService.getAlias(score);
-            scoreLabel.setText("Score: " + score + "  -||-  Alias: " + alias);
+            //scoreLabel.setText("Score: " + score + "  -||-  Alias: " + alias);
         });
     }
 }
