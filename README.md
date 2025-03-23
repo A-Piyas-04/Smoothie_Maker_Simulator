@@ -34,7 +34,7 @@ Smoothie Maker is an interactive Simulation application where users can:
 
 
 3. **Liskov Substitution Principle (LSP)**
-   - `Ingredient` hierarchy: Subclasses (FruitIngredient, FlavorIngredient, ToppingIngredient)
+   - `Ingredient` hierarchy : Subclasses (FruitIngredient, FlavorIngredient, ToppingIngredient)
                              can be substituted for their base class.
 
 4. **Interface Segregation Principle (ISP)**
@@ -73,24 +73,37 @@ Smoothie Maker is an interactive Simulation application where users can:
 ```
 src/
 ├── UI Components
-│   ├── MainFrame.java
-│   ├── GameFrame.java
-│   ├── GamePanel.java
-│   └── NavigationPanel.java
-├── Core Logic
-│   ├── BlenderController.java
-│   ├── GameStateManager.java
-│   └── ScoreService.java
+│   ├── MainFrame.java             # Main application window
+│   ├── GameFrame.java             # Game container frame
+│   ├── GamePanel.java             # Main game interface
+│   ├── NavigationPanel.java       # Navigation controls
+│   ├── BlendControlPanel.java     # Blending controls UI
+│   ├── BlenderAnimationPanel.java # Blending animation
+│   ├── IngredientPanel.java       # Ingredient selection UI
+│   ├── MugSelectionPanel.java     # Mug selection interface
+│   ├── StatusPanel.java           # Status display panel
+│   └── SmoothieLogViewer.java     # History viewer
+│
+├── Controllers
+│   ├── BlenderController.java   # Blending logic controller
+│   └── GameStateManager.java    # Game state management
+│
+├── Services
+│   ├── AliasService.java        # Ingredient alias handling
+│   ├── ScoreService.java        # Score calculation
+│   └── StatusLogger.java        # Status logging service
+│
 ├── Models
-│   ├── Ingredient.java
-│   ├── FlavorIngredient.java
-│   ├── FruitIngredient.java
-│   └── ToppingIngredient.java
+│   ├── Ingredient.java          # Base ingredient class
+│   ├── FlavorIngredient.java    # Flavor type ingredients
+│   ├── FruitIngredient.java     # Fruit type ingredients
+│   └── ToppingIngredient.java   # Topping type ingredients
+│
 └── Mug System
-    ├── Mug.java
-    ├── MugFactory.java
-    ├── GlassMug.java
-    └── PlasticMug.java
+    ├── Mug.java                 # Mug interface
+    ├── MugFactory.java          # Mug creation factory
+    ├── GlassMug.java            # Glass mug implementation
+    └── PlasticMug.java          # Plastic mug implementation
 ```
 
 ## Features
