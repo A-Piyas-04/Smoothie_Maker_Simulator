@@ -25,7 +25,7 @@ class BlenderController {
             result.append("- Mixing ").append(i.getName()).append("\n");
         }
         result.append("\n=========== BLEND COMPLETE! =========== \n\nEnjoy your - [" + smoothieName +"]" + "\n\n");
-        ingredients.clear();
+        //ingredients.clear();          
         return result.toString();
     }
 

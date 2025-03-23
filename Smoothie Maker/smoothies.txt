@@ -41,3 +41,33 @@ Ingredients:
 Score: 7
 Alias: Wellness Seeker
 ==========================
+
+=== Smoothie Creation Log ===
+Time: 2025-03-23 12:14:17
+Player: Irfuu
+Smoothie: Fresh Pani
+Ingredients:
+Score: 25
+Alias: Health Guru
+==========================
+
+=== Smoothie Creation Log ===
+Time: 2025-03-23 12:24:16
+Player: testPlayer
+Smoothie: testSmoothie
+Ingredients:
+Score: 13
+Alias: Fitness Advocate
+==========================
+
+=== Smoothie Creation Log ===
+Time: 2025-03-23 12:30:25
+Player: aaaaaa
+Smoothie: bbbbb
+Ingredients:
+- Mixing : Chocolate
+- Mixing : Kiwi
+- Mixing : Nuts
+Score: 7
+Alias: Wellness Seeker
+==========================
