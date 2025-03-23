@@ -7,7 +7,7 @@ class BlenderController {
     private BlenderAnimationPanel blenderPanel;
 
     public BlenderController() {
-        blenderPanel = new BlenderAnimationPanel();
+        blenderPanel = new BlenderAnimationPanel(this);
     }
 
     public BlenderAnimationPanel getBlenderPanel() {

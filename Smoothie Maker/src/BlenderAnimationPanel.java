@@ -8,8 +8,10 @@ public class BlenderAnimationPanel extends JPanel {
     private Timer animationTimer;
     private int progress = 0;
     private Runnable onAnimationComplete;
+    private BlenderController blenderController;
     
-    public BlenderAnimationPanel() {
+    public BlenderAnimationPanel(BlenderController controller) {
+        this.blenderController = controller;
         setPreferredSize(new Dimension(200, 200));
         animationTimer = new Timer(50, new ActionListener() {
             @Override
@@ -18,6 +20,11 @@ public class BlenderAnimationPanel extends JPanel {
                 progress = Math.min(progress + 2, 100);
                 if (progress >= 100) {
                     animationTimer.stop();
+                    String alias = AliasService.getAlias(blenderController.calculateScore());
+                    JOptionPane.showMessageDialog(BlenderAnimationPanel.this,
+                        "Enjoy your smoothie, " + alias.toUpperCase() + "!",
+                        "Blend Complete",
+                        JOptionPane.INFORMATION_MESSAGE);
                     if (onAnimationComplete != null) {
                         onAnimationComplete.run();
                     }
