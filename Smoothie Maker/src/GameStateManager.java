@@ -7,6 +7,8 @@ public class GameStateManager {
     private int score;
     private ScoreService scoreService;
     private Consumer<Integer> scoreUpdateListener;
+    private String playerName;
+    private StatusLogger statusLogger;
 
     public void setScoreUpdateListener(Consumer<Integer> listener) {
         this.scoreUpdateListener = listener;
@@ -18,7 +20,17 @@ public class GameStateManager {
     public GameStateManager() {
         blenderController = new BlenderController();
         scoreService = new ScoreService();
+        statusLogger = new StatusLogger();
         score = 0;
+        playerName = "Player";
+    }
+
+    public void setPlayerName(String name) {
+        this.playerName = name;
+    }
+
+    public String getPlayerName() {
+        return playerName;
     }
 
     public void setMug(Mug mug) {
@@ -46,10 +58,12 @@ public class GameStateManager {
 
     public String blend(String smoothieName) {
         String result = blenderController.blend(smoothieName);
-        score += blenderController.calculateScore();
+        int blendScore = blenderController.calculateScore();
+        score += blendScore;
         if (scoreUpdateListener != null) {
             scoreUpdateListener.accept(score);
         }
+        statusLogger.logBlend(playerName, smoothieName, blenderController.getIngredients(), blendScore);
         return result;
     }
 

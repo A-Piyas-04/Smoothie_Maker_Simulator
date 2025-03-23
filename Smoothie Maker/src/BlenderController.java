@@ -29,6 +29,10 @@ class BlenderController {
         return result.toString();
     }
 
+    public List<Ingredient> getIngredients() {
+        return new ArrayList<>(ingredients);
+    }
+
     public void addIngredient(Ingredient ingredient) {
         ingredients.add(ingredient);
     }
