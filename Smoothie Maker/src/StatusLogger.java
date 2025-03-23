@@ -9,6 +9,14 @@ public class StatusLogger {
     private static final String LOG_FILE = "D:\\Java\\Project OOP-2\\Smoothie Maker\\smoothies.txt";
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
+    private String formatIngredientDetails(Ingredient ingredient) {
+        return String.format("  - %s (%s, Type: %s, Score: %d)",
+            ingredient.getName(),
+            ingredient.getClass().getSimpleName(),
+            ingredient.getType(),
+            ingredient.getScore());
+    }
+
     public void logBlend(String playerName, String smoothieName, List<Ingredient> ingredients, int score) {
         String alias = AliasService.getAlias(score);
         try (PrintWriter writer = new PrintWriter(new FileWriter(LOG_FILE, true))) {
@@ -20,8 +28,7 @@ public class StatusLogger {
             logEntry.append("Ingredients:\n");
             
             for (Ingredient ingredient : ingredients) {
-                logEntry.append("  - ").append(ingredient.getName())
-                       .append(" (").append(ingredient.getClass().getSimpleName()).append(")\n");
+                logEntry.append(formatIngredientDetails(ingredient)).append("\n");
             }
             
             logEntry.append("Score: ").append(score).append("\n");
