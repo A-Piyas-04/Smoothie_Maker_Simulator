@@ -15,7 +15,7 @@ public class MainFrame extends JFrame {
 
         // Create panels
         NavigationPanel navigationPanel = new NavigationPanel(this);
-        SmoothieLogViewer smoothieLogViewer = new SmoothieLogViewer();
+        SmoothieLogViewer smoothieLogViewer = new SmoothieLogViewer(this);
         
         // Add panels to card layout
         cardPanel.add(navigationPanel, "navigation");

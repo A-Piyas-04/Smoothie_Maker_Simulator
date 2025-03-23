@@ -7,8 +7,10 @@ import java.io.IOException;
 public class SmoothieLogViewer extends JPanel {
     private static final String LOG_FILE = "D:\\Java\\Project OOP-2\\Smoothie Maker\\smoothies.txt";
     private JTextArea logArea;
+    private MainFrame mainFrame;
 
-    public SmoothieLogViewer() {
+    public SmoothieLogViewer(MainFrame mainFrame) {
+        this.mainFrame = mainFrame;
         setLayout(new BorderLayout());
         
         // Create text area with scroll pane
@@ -17,8 +19,16 @@ public class SmoothieLogViewer extends JPanel {
         logArea.setFont(new Font("Monospaced", Font.BOLD, 13));
         JScrollPane scrollPane = new JScrollPane(logArea);
         
+        // Create header panel with title and back button
+        JPanel headerPanel = new JPanel(new BorderLayout());
+        headerPanel.add(new JLabel("Smoothie Creation Logs", SwingConstants.CENTER), BorderLayout.CENTER);
+        
+        JButton backButton = new JButton("Back to Main Menu");
+        backButton.addActionListener(e -> mainFrame.getCardLayout().show(mainFrame.getCardPanel(), "navigation"));
+        headerPanel.add(backButton, BorderLayout.EAST);
+        
         // Add components
-        add(new JLabel("Smoothie Creation Logs", SwingConstants.CENTER), BorderLayout.NORTH);
+        add(headerPanel, BorderLayout.NORTH);
         add(scrollPane, BorderLayout.CENTER);
         
         // Load and display logs
