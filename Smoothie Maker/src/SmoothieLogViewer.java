@@ -14,7 +14,7 @@ public class SmoothieLogViewer extends JPanel {
         // Create text area with scroll pane
         logArea = new JTextArea();
         logArea.setEditable(false);
-        logArea.setFont(new Font("Monospaced", Font.PLAIN, 12));
+        logArea.setFont(new Font("Monospaced", Font.BOLD, 13));
         JScrollPane scrollPane = new JScrollPane(logArea);
         
         // Add components
