@@ -56,22 +56,5 @@ public class BlendControlPanel extends JPanel {
 
         String result = gameStateManager.blend(smoothieName);
         statusPanel.updateStatus(result);
-
-        // Log smoothie details
-        String playerName = playerNameField.getText().trim();
-        if (playerName.isEmpty()) playerName = "Anonymous";
-        
-        SmoothieLogger.log(
-            playerName,
-            smoothieName,
-            gameStateManager.getFlavorCount(),
-            gameStateManager.getFlavorScore(),
-            gameStateManager.getFruitCount(),
-            gameStateManager.getFruitScore(),
-            gameStateManager.getToppingCount(),
-            gameStateManager.getToppingScore(),
-            gameStateManager.getScore(),
-            AliasService.getAlias(gameStateManager.getScore())
-        );
     }
 }
