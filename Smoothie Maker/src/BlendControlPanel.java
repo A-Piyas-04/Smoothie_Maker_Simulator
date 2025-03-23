@@ -19,9 +19,9 @@ public class BlendControlPanel extends JPanel {
         playerNameField = new JTextField();
         smoothieNameField = new JTextField();
 
-        inputPanel.add(new JLabel("Your Name     :"));
+        inputPanel.add(new JLabel("Player Name     :"));
         inputPanel.add(playerNameField);
-        inputPanel.add(new JLabel("Smoothie Name :"));
+        inputPanel.add(new JLabel("Smoothie Name   :"));
         inputPanel.add(smoothieNameField);
 
         JButton blendBtn = new JButton("Blend!");
@@ -33,8 +33,14 @@ public class BlendControlPanel extends JPanel {
 
     private void handleBlendButtonClick() {
         String smoothieName = smoothieNameField.getText().trim();
+        String playerName = playerNameField.getText().trim();
+        
         if (smoothieName.isEmpty()) {
             statusPanel.updateStatus("Please name your smoothie first!");
+            return;
+        }
+        if (playerName.isEmpty()) {
+            statusPanel.updateStatus("Please enter your name first!");
             return;
         }
         if (gameStateManager.getCurrentMug() == null || !gameStateManager.hasIngredients()) {
@@ -43,6 +49,7 @@ public class BlendControlPanel extends JPanel {
         }
 
         smoothieNameField.setText("");
+        gameStateManager.setPlayerName(playerName);
         BlenderAnimationPanel blenderPanel = gameStateManager.getBlenderController().getBlenderPanel();
         blenderPanel.setOnAnimationComplete(() -> performBlending(smoothieName));
         blenderPanel.startAnimation();
