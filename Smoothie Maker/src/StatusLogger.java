@@ -13,19 +13,21 @@ public class StatusLogger {
         String alias = AliasService.getAlias(score);
         try (PrintWriter writer = new PrintWriter(new FileWriter(LOG_FILE, true))) {
             StringBuilder logEntry = new StringBuilder();
-            logEntry.append("\n=== Smoothie Creation Log ===\n");
-            logEntry.append("Time: ").append(LocalDateTime.now().format(formatter)).append("\n");
-            logEntry.append("Player: ").append(playerName).append("\n");
-            logEntry.append("Smoothie: ").append(smoothieName).append("\n");
-            logEntry.append("Ingredients:\n");
+            logEntry.append("+==================================+\n");
+            logEntry.append("|====) Smoothie Creation Log (=====|\n");
+            logEntry.append("+==================================+\n");
+            logEntry.append("Time        : ").append(LocalDateTime.now().format(formatter)).append("\n");
+            logEntry.append("Player      : ").append(playerName).append("\n");
+            logEntry.append("Smoothie    : ").append(smoothieName).append("\n");
+            logEntry.append("\nIngredients :\n");
             
             for (Ingredient ingredient : ingredients) {
                 logEntry.append("- Mixing : ").append(ingredient.getName()).append("\n");
             }
             
-            logEntry.append("Score: ").append(score).append("\n");
-            logEntry.append("Alias: ").append(alias).append("\n");
-            logEntry.append("==========================\n");
+            logEntry.append("\nScore       : ").append(score).append("\n");
+            logEntry.append("Alias       : ").append(alias).append("\n");
+            logEntry.append("\n+==================================+\n\n\n\n");
             
             writer.write(logEntry.toString());
         } catch (IOException e) {

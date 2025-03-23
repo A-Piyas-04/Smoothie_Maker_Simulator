@@ -1,0 +1,49 @@
++==================================+
+|====) Smoothie Creation Log (=====|
++==================================+
+
+Time        : 2025-03-23 12:50:30
+Player      : Nafiiiiz
+Smoothie    : Virgin Mojo
+
+Ingredients :
+- Mixing : Natural Milk
+- Mixing : Caramel
+- Mixing : Caramel
+- Mixing : Mango
+- Mixing : Choco Chips
+- Mixing : Choco Chips
+- Mixing : Sprinkles
+
+Score       : -12
+Alias       : Wellness Trainee
+
++==================================+
+
+
+
+
+
+
++==================================+
+|====) Smoothie Creation Log (=====|
++==================================+
+Time        : 2025-03-23 12:59:39
+Player      : Saddy
+Smoothie    : Chennaswami-Muttwoswami-Venugopal-smoothiyer
+
+Ingredients :
+- Mixing : Almond Milk
+- Mixing : Vanilla
+- Mixing : Caramel
+- Mixing : Kiwi
+- Mixing : Granola
+- Mixing : Coconut Flakes
+
+Score       : 13
+Alias       : Fitness Advocate
+
++==================================+
+
+
+
