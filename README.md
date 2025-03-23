@@ -106,40 +106,25 @@ src/
     └── PlasticMug.java          # Plastic mug implementation
 ```
 
-## Features
-
-- Interactive UI with card-based navigation
-- Multiple ingredient categories (fruits, flavors, toppings)
-- Different mug types (glass, plastic)
-- Real-time score calculation
-- Smoothie creation history
-- Blending animation
-
-
-
-## Dependencies
-
-- Java Swing for UI components
-- Java AWT for graphics and animations
-
 ## Getting Started
 
 1. Clone the repository
 2. Open the project in your preferred Java IDE
-3. Run `MainFrame.java` to start the application
+3. Run `Main.java` to start the application
 
 ## Usage
-1. Start the application
-2. Select ingredients and mug type
-3. Blend the ingredients to create a smoothie
-4. View smoothie creation history
+1. Start the application and select 'Play Game' to go to the game window
+   ![Main Menu and Game Window](Screenshots/2.1.png)
+   ![Game Interface](Screenshots/2.2.png)
 
-## Contributing
+2. Select your preferred ingredients and mug type
+3. Blend your ingredients to create a smoothie
 
-Contributions are welcome! Please feel free to submit pull requests with new features or improvements.
+   ![Ingredient Selection](Screenshots/3.png)
+   ![Blending Process](Screenshots/4.png)
 
-1. Fork the repository
-2. Create your feature branch
-3. Commit your changes
-4. Push to the branch
-5. Submit a pull request
+4. Get back to 'Main Menu' to track your smoothie
+   ![Health Score](Screenshots/5.1.png)
+
+5. View your smoothie creation history from the 'Main Menu'
+   ![Creation History](Screenshots/5.2.png)

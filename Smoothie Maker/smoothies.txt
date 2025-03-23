@@ -90,3 +90,24 @@ Alias       : Wellness Seeker
 
 
 
++==================================+
+|====) Smoothie Creation Log (=====|
++==================================+
+Time        : 2025-03-23 17:00:39
+Player      : Pias
+Smoothie    : Almendo
+
+Ingredients :
+- Mixing : Almond Milk
+- Mixing : Caramel
+- Mixing : Banana
+- Mixing : Nuts
+- Mixing : Coconut Flakes
+
+Score       : 14
+Alias       : Fitness Advocate
+
++==================================+
+
+
+
