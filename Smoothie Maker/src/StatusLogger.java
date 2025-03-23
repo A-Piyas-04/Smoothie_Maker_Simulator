@@ -10,6 +10,7 @@ public class StatusLogger {
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     public void logBlend(String playerName, String smoothieName, List<Ingredient> ingredients, int score) {
+        String alias = AliasService.getAlias(score);
         try (PrintWriter writer = new PrintWriter(new FileWriter(LOG_FILE, true))) {
             StringBuilder logEntry = new StringBuilder();
             logEntry.append("\n=== Smoothie Creation Log ===\n");
@@ -24,6 +25,7 @@ public class StatusLogger {
             }
             
             logEntry.append("Score: ").append(score).append("\n");
+            logEntry.append("Alias: ").append(alias).append("\n");
             logEntry.append("==========================\n");
             
             writer.write(logEntry.toString());
