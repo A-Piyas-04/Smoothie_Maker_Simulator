@@ -13,11 +13,19 @@ public class MainFrame extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(true);
 
-        // Create navigation panel
+        // Create panels
         NavigationPanel navigationPanel = new NavigationPanel(this);
+        SmoothieLogViewer smoothieLogViewer = new SmoothieLogViewer();
+        
+        // Add panels to card layout
+        cardPanel.add(navigationPanel, "navigation");
+        cardPanel.add(smoothieLogViewer, "smoothies");
         
         // Add components to frame
-        add(navigationPanel, BorderLayout.CENTER);
+        add(cardPanel, BorderLayout.CENTER);
+        
+        // Show navigation panel initially
+        cardLayout.show(cardPanel, "navigation");
     }
 
     public CardLayout getCardLayout() {
