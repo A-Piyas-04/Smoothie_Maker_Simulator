@@ -1,4 +1,4 @@
-# Smoothie Maker
+# Smoothie Maker Simulator
 
 A Java Swing application that lets users create and customize their own smoothies with various ingredients, flavors, and toppings.
 
