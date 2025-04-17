@@ -4,13 +4,26 @@ A Java Swing application that lets users create and customize their own smoothie
 
 ## Project Overview
 
-Smoothie Maker is an interactive Simulation application where users can:
-- Select different ingredients (fruits, flavors, toppings)
-- Choose between different mug types
-- Create and blend custom smoothies
-- Track smoothies' health-scores based on ingredient combinations
-- Get aliases for each ingredients
-- View smoothie creation history of all players & their smoothies
+The goal of this project is to create an interactive simulation where users can design their own smoothies by selecting various fruits, flavors, and toppings.
+It promotes health awareness by calculating a health score for each smoothie based on ingredient combinations, while offering a fun and customizable user experience.
+The project follows object-oriented design principles and applies SOLID principles to maintain a modular, scalable architecture
+
+
+## Key Features
+- A wide range of ingredient categories—fruits, flavors, and toppings—for full customization.
+- A mug selection system that allows users to choose their preferred container.
+- Tracking smoothies' health-scores based on ingredient combinations.
+- Getting aliases for each ingredients
+- Automatic logging of all smoothie creations for easy history tracking.
+- Fun ingredient aliases to make the user experience more engaging.
+- A clean and responsive graphical user interface built using Java Swing.
+
+## Structural Design
+The project is structured using a "Modular Design" approach.
+Each component of the system—such as the user interface, logic controllers, services, and models—is placed in a separate package.
+For example, the UI package handles all user interactions, while the Services package includes logic like scoring and status logging.
+The use of abstract classes and interfaces ensures flexibility and follows principles like Single Responsibility and Dependency Inversion.
+This design makes it easy to extend the system, such as adding new ingredients or mug types without modifying existing code.
 
 ## SOLID Principles Analysis ---->
 
